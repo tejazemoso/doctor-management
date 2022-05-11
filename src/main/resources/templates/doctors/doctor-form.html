@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/demo.css}" />
+
+    <title>Save doctor</title>
+</head>
+
+<body class="main">
+
+<div class="container">
+
+    <br>
+    <center><h3 >Doctor Management System</h3></center>
+    <hr>
+
+    <p class="h4 mb-4">Add a new doctor</p>
+
+    <form action="#" th:action="@{/doctors/save}"
+          th:object="${doctor}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{firstName}"
+               class="form-control mb-4 col-4" placeholder="First name">
+
+        <input type="text" th:field="*{lastName}"
+               class="form-control mb-4 col-4" placeholder="Last name">
+
+        <input type="text" th:field="*{email}"
+               class="form-control mb-4 col-4" placeholder="Email">
+
+        <input type="text" th:field="*{specialist}"
+               class="form-control mb-4 col-4" placeholder="Specialist">
+
+        <input type="text" th:field="*{experience}"
+               class="form-control mb-4 col-4" placeholder="Experience">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+    <a th:href="@{/doctors/list}">Back to doctors List</a>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

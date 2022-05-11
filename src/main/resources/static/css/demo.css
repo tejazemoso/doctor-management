@@ -1,0 +1,10 @@
+.funny{
+font-style:italic;
+color:green;
+}
+
+.main{
+        background-image:url("https://img.freepik.com/free-photo/doctor-s-stethoscope-with-blue-background_23-2147652363.jpg");
+        background-repeat:no-repeat;
+        background-size:cover
+}
