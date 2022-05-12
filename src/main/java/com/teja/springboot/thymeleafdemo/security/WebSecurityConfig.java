@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
@@ -40,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/doctors/list").hasAnyAuthority("ADMIN")
                 .antMatchers("/doctors/list").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/403");
 
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
+        /*http.csrf().disable();
+        http.headers().frameOptions().disable();*/
     }
 }

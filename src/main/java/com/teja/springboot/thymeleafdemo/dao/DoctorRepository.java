@@ -8,11 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
-
-    // that's it ... no need to write any code LOL!
-
-   // public List<Doctor> findAllByOrderByLastNameAsc();
-   //Query for search option
    @Query(value = "select * from doctor d where d.first_name like %:keyword% or d.specialist like %:keyword%", nativeQuery = true)
    List<Doctor> findByKeyword(@Param("keyword") String keyword);
 }

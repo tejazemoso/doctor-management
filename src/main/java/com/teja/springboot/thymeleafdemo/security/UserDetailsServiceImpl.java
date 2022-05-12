@@ -2,7 +2,6 @@ package com.teja.springboot.thymeleafdemo.security;
 
 import com.teja.springboot.thymeleafdemo.dao.UserRepository;
 import com.teja.springboot.thymeleafdemo.entity.User;
-import com.teja.springboot.thymeleafdemo.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
