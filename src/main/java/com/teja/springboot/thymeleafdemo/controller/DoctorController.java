@@ -3,6 +3,7 @@ package com.teja.springboot.thymeleafdemo.controller;
 import java.util.List;
 
 import com.teja.springboot.thymeleafdemo.service.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,15 @@ import com.teja.springboot.thymeleafdemo.entity.Doctor;
 @RequestMapping("/doctors")
 public class DoctorController {
 
+    @Autowired
     private DoctorService doctorService;
 
+    public DoctorController(){}
     public DoctorController(DoctorService theDoctorService) {
         doctorService = theDoctorService;
     }
 
-    @RequestMapping(path={"/list","/list/search"})
+    @GetMapping(path={"/list","/list/search"})
     public String listDoctors(Model theModel,String keyword) {
 
         if(keyword!=null){

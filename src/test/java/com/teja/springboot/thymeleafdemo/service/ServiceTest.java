@@ -1,13 +1,15 @@
-package com.teja.springboot.thymeleafdemo;
+package com.teja.springboot.thymeleafdemo.service;
 
 import com.teja.springboot.thymeleafdemo.dao.DoctorRepository;
+import com.teja.springboot.thymeleafdemo.dao.UserRepository;
 import com.teja.springboot.thymeleafdemo.entity.Doctor;
-import com.teja.springboot.thymeleafdemo.service.DoctorService;
+import com.teja.springboot.thymeleafdemo.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -19,13 +21,18 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class ThymeleafdemoApplicationTests {
+class ServiceTest {
 
 	@Autowired
 	private DoctorService doctorService;
 
+	@Autowired
+	private UserDetailsService userDetailsService;
 	@MockBean
 	private DoctorRepository doctorRepository;
+
+	@MockBean
+	private UserRepository userRepository;
 
 	/*@Test
 	void contextLoads() {
@@ -66,6 +73,11 @@ class ThymeleafdemoApplicationTests {
 	}
 
 
-
-
+	@Test
+	void loadUserByUsername(){
+		String name="Sampath";
+		User user=new User(1L,"admin","admin",true);
+		when(userRepository.getUserByUsername(name)).thenReturn(user);
+		assertEquals(1,1);
+	}
 }

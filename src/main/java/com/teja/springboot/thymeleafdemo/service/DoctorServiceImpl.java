@@ -3,6 +3,7 @@ package com.teja.springboot.thymeleafdemo.service;
 import com.teja.springboot.thymeleafdemo.dao.DoctorRepository;
 import com.teja.springboot.thymeleafdemo.entity.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +12,9 @@ import java.util.Optional;
 @Service
 public class DoctorServiceImpl implements DoctorService {
 
-    private DoctorRepository doctorRepository;
 
     @Autowired
-    public DoctorServiceImpl(DoctorRepository theDoctorRepository) {
-        doctorRepository = theDoctorRepository;
-    }
+    private DoctorRepository doctorRepository;
 
     @Override
     public List<Doctor> findAll() {

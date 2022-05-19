@@ -1,5 +1,7 @@
 package com.teja.springboot.thymeleafdemo.security;
 
+import com.teja.springboot.thymeleafdemo.dao.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     @Bean
     public UserDetailsService userDetailsService() {
@@ -41,8 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/doctors/list").hasAnyAuthority("ADMIN")
-                .antMatchers("/doctors/list").hasAuthority("USER")
+                //.antMatchers("/doctors/list").hasAnyAuthority("ADMIN")
+                //.antMatchers("/doctors/list").hasAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
